@@ -1,4 +1,7 @@
+# import yaml
 import pytest
+import json
+import yaml
 
 from pythonic_garage_band.bands import (
     Band,
@@ -196,32 +199,32 @@ def clean():
 
 
 # @pytest.mark.skip("stretch")
-# def test_from_file():
-#     with open("assets/bands.json") as f:
-#         bands = json.loads(f.read())
+def test_from_file():
+    with open("assets/bands.json") as f:
+        bands = json.loads(f.read())
 
-#     assert len(bands) == 1
+    assert len(bands) == 1
 
-#     nirvana_data = bands[0]
+    nirvana_data = bands[0]
 
-#     nirvana = Band(nirvana_data["name"], nirvana_data["members"])
+    nirvana = Band(nirvana_data["name"], nirvana_data["members"])
 
-#     assert nirvana.name == "Nirvana"
-
-
-# @pytest.mark.skip("stretch")
-# def test_from_yaml():
-#     bands = yaml.safe_load(open("assets/bands.yml"))
-
-#     assert bands[0]["name"] == "Nirvana"
-
-#     assert bands[1]["name"] == "The Pixies"
+    assert nirvana.name == "Nirvana"
 
 
 # @pytest.mark.skip("stretch")
-# def test_abstract_musician():
-#     with pytest.raises(TypeError):
-#         Musician("nobody", "nothing", "silence")
+def test_from_yaml():
+    bands = yaml.safe_load(open("assets/bands.yml"))
+
+    assert bands[0]["name"] == "Nirvana"
+
+    assert bands[1]["name"] == "The Pixies"
+
+
+# @pytest.mark.skip("stretch")
+def test_abstract_musician():
+    with pytest.raises(TypeError):
+        Musician("nobody", "nothing", "silence")
 
 
 # @pytest.mark.skip("stretch")
