@@ -18,12 +18,7 @@ class Band:
 
     @classmethod
     def to_list(cls):
-        try:
-            cls.instances.append(cls.name)
-        except AttributeError:
-            return cls.instances
-        else:
-            return cls.instances
+        return cls.instances
 
     def play_solos(self):
         return self.solos
@@ -47,7 +42,7 @@ class Musician(Band):
 class Guitarist(Musician):
 
     def __str__(self):
-        return f'My name is {self.name} and I play guitar'
+        return f'My name is {self.name} and I play {self.get_instrument()}'
 
     def __repr__(self):
         return f"Guitarist instance. Name = {self.name}"
@@ -64,7 +59,7 @@ class Guitarist(Musician):
 
 class Bassist(Musician):
     def __str__(self):
-        return f'My name is {self.name} and I play bass'
+        return f'My name is {self.name} and I play {self.get_instrument()}'
 
     def __repr__(self):
         return f"Bassist instance. Name = {self.name}"
@@ -81,7 +76,7 @@ class Bassist(Musician):
 
 class Drummer(Musician):
     def __str__(self):
-        return f'My name is {self.name} and I play drums'
+        return f'My name is {self.name} and I play {self.get_instrument()}'
 
     def __repr__(self):
         return f"Drummer instance. Name = {self.name}"
